@@ -11,3 +11,5 @@ jobs:
       - uses: actions/checkout@v2
       # linter
       - uses: michaelw90/PHP-Lint@master
+      # security check
+      - uses: symfonycorp/security-checker-action@v2
