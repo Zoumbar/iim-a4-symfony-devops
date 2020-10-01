@@ -7,9 +7,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # git clone
-      - uses: actions/checkout@v2
-      # linter
-      - uses: michaelw90/PHP-Lint@master
-      # security check
-      - uses: symfonycorp/security-checker-action@v2
+        - name: Init project
+        uses: actions/checkout@v2
+        - name: PHP Linter
+        uses: michaelw90/PHP-Lint@master
+        - name: Security checker
+        uses: symfonycorp/security-checker-action@v2
+        - name: PHPStan
+        uses: docker://oskarstark/phpstan-ga
+        with:
+          args: analyse src/ --level=5
